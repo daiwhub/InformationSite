@@ -167,7 +167,7 @@ public class RoundProgressBar extends View {
         paint.setStrokeWidth(0);
         paint.setColor(textColor);
         paint.setTextSize(textSize);
-        ////设置字体
+        //设置字体
         paint.setTypeface(Typeface.DEFAULT_BOLD);
 
         //中间的进度百分比，先转换成float在进行除法运算，不然都为0

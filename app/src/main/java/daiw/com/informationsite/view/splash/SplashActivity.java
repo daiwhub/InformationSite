@@ -1,9 +1,13 @@
 package daiw.com.informationsite.view.splash;
 
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 import daiw.com.informationsite.R;
+import daiw.com.informationsite.manager.StartActivityManager;
 import daiw.com.informationsite.view.custom.progessbar.RoundProgressBar;
 
 public class SplashActivity extends AppCompatActivity {
@@ -11,7 +15,11 @@ public class SplashActivity extends AppCompatActivity {
     private int mTotalProgress;
     private int mCurrentProgress;
 
-    private RoundProgressBar rpBar01;
+    private ImageView adImage;
+
+    private RoundProgressBar rpBar;
+
+    private CountDownTimer downTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,9 +29,45 @@ public class SplashActivity extends AppCompatActivity {
 
         initVariable();
         initView();
+        initEnevt();
 
-        new Thread(new ProgressRunable()).start();
+        initStartCountDown();
+
     }
+
+    private void initEnevt() {
+        rpBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //跳转首页
+                StartActivityManager.startManiActivity(SplashActivity.this);
+                finish();
+            }
+        });
+    }
+
+    private void initStartCountDown() {
+
+        downTimer = new CountDownTimer(5500,50) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                if(mCurrentProgress < mTotalProgress){
+                    mCurrentProgress += 1;
+
+                    rpBar.setProgress(mCurrentProgress);
+                }
+            }
+
+            @Override
+            public void onFinish() {
+                //跳转首页
+                StartActivityManager.startManiActivity(SplashActivity.this);
+                finish();
+            }
+        }.start();
+
+    }
+
 
     private void initVariable() {
         mTotalProgress = 100;
@@ -31,24 +75,17 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        rpBar01 = findViewById(R.id.ac_splash_skip_pg);
+        //广告图
+        adImage = findViewById(R.id.ac_splash_ad_iv);
+        //跳过
+        rpBar = findViewById(R.id.ac_splash_skip_pg);
     }
 
-    class ProgressRunable implements Runnable{
-
-        @Override
-        public void run() {
-            while (mCurrentProgress < mTotalProgress){
-                mCurrentProgress += 1;
-
-                rpBar01.setProgress(mCurrentProgress);
-
-                try {
-                    Thread.sleep(200);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(downTimer != null){
+            downTimer.cancel();
         }
     }
 }
