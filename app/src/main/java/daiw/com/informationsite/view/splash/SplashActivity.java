@@ -1,13 +1,16 @@
 package daiw.com.informationsite.view.splash;
 
 import android.Manifest;
+import android.os.Build;
 import android.os.CountDownTimer;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.io.File;
 
@@ -16,6 +19,7 @@ import daiw.com.informationsite.api.constans.Constans;
 import daiw.com.informationsite.interf.PermissionsRequestInterf;
 import daiw.com.informationsite.manager.PermissionManager;
 import daiw.com.informationsite.manager.StartActivityManager;
+import daiw.com.informationsite.utils.AppMessage;
 import daiw.com.informationsite.utils.ToastUtil;
 import daiw.com.informationsite.utils.file.FileUtil;
 import daiw.com.informationsite.utils.glide.LoadImageHelper;
@@ -32,6 +36,8 @@ public class SplashActivity extends AppCompatActivity implements PermissionsRequ
     private ImageView adImage;
 
     private RoundProgressBar rpBar;
+
+    private TextView mVersionTv;
 
     private CountDownTimer downTimer;
 
@@ -101,6 +107,16 @@ public class SplashActivity extends AppCompatActivity implements PermissionsRequ
         adImage = findViewById(R.id.ac_splash_ad_iv);
         //跳过
         rpBar = findViewById(R.id.ac_splash_skip_pg);
+        //版本
+        mVersionTv = findViewById(R.id.ac_splash_bottom_app_version_tv);
+        String versionName = AppMessage.getVersionName(getApplicationContext());
+        if(!TextUtils.isEmpty(versionName)) {
+            //版本
+            mVersionTv.setText(versionName);
+        }else {
+            //版本
+            mVersionTv.setText("");
+        }
     }
      /*
       * @Description :加载广告图
