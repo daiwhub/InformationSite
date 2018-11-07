@@ -10,8 +10,8 @@
 
     <ImageView
         android:id="@+id/ac_splash_ad_iv"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="@dimen/dp_0"
         android:scaleType="centerCrop"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -21,32 +21,32 @@
 
     <daiw.com.informationsite.view.custom.progessbar.RoundProgressBar
         android:id="@+id/ac_splash_skip_pg"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/dp_50"
+        android:layout_height="@dimen/dp_50"
         android_custom:startAngle="-90"
         android_custom:backColor="@color/color_F0F0F0"
         android_custom:roundColor="@color/color_F0F0F0"
         android_custom:roundProgressColor="@android:color/holo_blue_bright"
-        android_custom:roundWidth="2dp"
+        android_custom:roundWidth="@dimen/dp_2"
         android_custom:textColor="@color/text_666666"
-        android_custom:textSize="14sp"
+        android_custom:textSize="@dimen/sp_14"
         android_custom:text="跳过"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="15dp"/>
+        android:layout_marginTop="@dimen/dp_15"
+        android:layout_marginRight="@dimen/dp_15"/>
 
         <ImageView
             android:id="@+id/ac_splash_bottom_logo_iv"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="@dimen/dp_35"
+            android:layout_height="@dimen/dp_35"
             android:src="@mipmap/logo"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toLeftOf="@id/ac_splash_bottom_app_name_tv"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginBottom="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_20"/>
 
         <TextView
             android:id="@+id/ac_splash_bottom_app_name_tv"
@@ -54,9 +54,9 @@
             android:layout_height="wrap_content"
             android:text="@string/app_name"
             android:textColor="@color/black"
-            android:textSize="18sp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
+            android:textSize="@dimen/sp_18"
+            android:layout_marginLeft="@dimen/dp_5"
+            android:layout_marginRight="@dimen/dp_5"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintLeft_toRightOf="@id/ac_splash_bottom_logo_iv"
             app:layout_constraintRight_toLeftOf="@id/ac_splash_bottom_app_version_tv"
@@ -68,7 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1.0.0"
-            android:textSize="10sp"
+            android:textSize="@dimen/sp_10"
             android:textColor="@color/text_999999"
             app:layout_constraintBaseline_toBaselineOf="@id/ac_splash_bottom_app_name_tv"
             app:layout_constraintHorizontal_chainStyle="packed"
