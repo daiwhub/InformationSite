@@ -1,5 +1,7 @@
 package daiw.com.informationsite.mvp.percenter;
 
+import daiw.com.informationsite.App;
+import daiw.com.informationsite.R;
 import daiw.com.informationsite.base.BasePercenter;
 import daiw.com.informationsite.bean.LoginResponse;
 import daiw.com.informationsite.http.result.HttpResultFailureSubscriber;
@@ -26,12 +28,22 @@ public class LoginPercenter extends BasePercenter {
 
             @Override
             public void _onSuccess(LoginResponse loginResponse) {
-
+                if(mView != null){
+                    if(loginResponse != null){
+                        if(loginResponse.getErrorCode() == 0){
+                            mView.showToast(App.getContext().getResources().getString(R.string.login_success));
+                            return;
+                        }
+                    }
+                    mView.loginError(App.getContext().getResources().getString(R.string.login_failure));
+                }
             }
         }, new HttpResultFailureSubscriber() {
             @Override
             public void _onFailure(Throwable t) {
-
+                if(mView != null){
+                    mView.loginError(t.getMessage());
+                }
             }
         }));
     }

@@ -10,25 +10,21 @@ import daiw.com.informationsite.api.constans.Constans;
 import daiw.com.informationsite.login.model.ModelLogin;
 import daiw.com.informationsite.login.percenter.PercenterLogin;
 import daiw.com.informationsite.login.view.ILoginView;
+import daiw.com.informationsite.manager.StartActivityManager;
 import daiw.com.informationsite.utils.download.files.DownLoadSplashAd;
 import daiw.com.informationsite.utils.log.LogoutUtils;
 
-public class MainActivity extends AppCompatActivity implements ILoginView {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final PercenterLogin percenterLogin = new PercenterLogin(this);
-
         findViewById(R.id.login).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ModelLogin m = new ModelLogin("daiw","123qwe");
-
-                percenterLogin.fetch(m);
-
+                StartActivityManager.startLoginActivity(App.getContext());
             }
         });
 
@@ -45,13 +41,4 @@ public class MainActivity extends AppCompatActivity implements ILoginView {
         FileDownloader.setup(this);
     }
 
-    @Override
-    public void loginSuccess() {
-        LogoutUtils.d("登录成功111");
-    }
-
-    @Override
-    public void loginFailure(int errorCode) {
-
-    }
 }

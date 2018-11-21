@@ -6,4 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".view.login.LoginActivity">
 
+    <Button
+        android:id="@+id/login_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_333333"
+        android:text="@string/login"
+        android:textSize="@dimen/sp_16"/>
+
 </android.support.constraint.ConstraintLayout>

@@ -3,6 +3,8 @@ package daiw.com.informationsite;
 import android.app.Application;
 import android.content.Context;
 
+import daiw.com.core.app.ProjectInit;
+
 /****************************
  * 类描述：
  *
@@ -20,7 +22,7 @@ public class App extends Application {
         super.onCreate();
 
         context = getApplicationContext();
-
+        ProjectInit.init(this).withApiHost("http://www.wanandroid.com/").configure();
     }
 
     public static Context getContext() {
