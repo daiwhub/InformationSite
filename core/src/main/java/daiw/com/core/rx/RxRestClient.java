@@ -30,22 +30,24 @@ public class RxRestClient {
 
     private final HashMap<String, Object> PARAMS;
     private final String URL;
-    private final  RequestBody BODY;
+    private final String HEADERKEY;
+    private final RequestBody BODY;
 
     private final File FILE;
 
-    public RxRestClient(HashMap<String,
-            Object> PARAMS,
+    public RxRestClient(String HEADERKEY,
+                        HashMap<String, Object> PARAMS,
                         String URL,
                         RequestBody BODY,
                         File FILE) {
+        this.HEADERKEY = HEADERKEY;
         this.PARAMS = PARAMS;
         this.URL = URL;
         this.BODY = BODY;
         this.FILE = FILE;
     }
 
-    public static RxRestClientBuilder create(){
+    public static RxRestClientBuilder create() {
         return new RxRestClientBuilder();
     }
 
@@ -54,22 +56,22 @@ public class RxRestClient {
         Observable<String> observable = null;
         switch (httpMethod) {
             case GET:
-                observable = service.get(URL, PARAMS);
+                observable = service.get(HEADERKEY, URL, PARAMS);
                 break;
             case POST:
-                observable = service.post(URL, PARAMS);
+                observable = service.post(HEADERKEY, URL, PARAMS);
                 break;
             case PUT:
-                observable = service.put(URL, PARAMS);
+                observable = service.put(HEADERKEY, URL, PARAMS);
                 break;
             case DELETE:
-                observable = service.delete(URL, PARAMS);
+                observable = service.delete(HEADERKEY, URL, PARAMS);
                 break;
             case UPLOAD:
                 final RequestBody requestBody = RequestBody.create(MultipartBody.FORM, FILE);
                 final MultipartBody.Part body = MultipartBody.Part.createFormData(
                         "file", FILE.getName(), requestBody);
-                observable = service.upload(URL, body);
+                observable = service.upload(HEADERKEY, URL, body);
                 break;
             case DOWNLOAD:
                 break;
@@ -80,7 +82,7 @@ public class RxRestClient {
     }
 
     public final Observable<String> get() {
-       return request(HttpMethod.GET);
+        return request(HttpMethod.GET);
     }
 
     public final Observable<String> post() {

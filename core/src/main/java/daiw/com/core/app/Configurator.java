@@ -16,6 +16,7 @@ import okhttp3.Interceptor;
 public class Configurator {
 
     private static final HashMap<Object, Object> CONFIGS = new HashMap<>();
+    private static final HashMap<String, String> HEADERKEYS = new HashMap<>();
     private static final ArrayList<Interceptor> INTERCEPTORS = new ArrayList<>();
 
     private static class Holder {
@@ -31,6 +32,9 @@ public class Configurator {
      */
     private Configurator() {
         CONFIGS.put(ConfigKeys.CONFIG_READY.name(), false);
+        if(! HEADERKEYS.isEmpty()){
+            HEADERKEYS.clear();
+        }
     }
 
     /**
@@ -64,6 +68,21 @@ public class Configurator {
         if(! isReady){
            throw  new RuntimeException("Configuration is not ready,call configure()");
         }
+    }
+
+    /**
+     * 获取配置信息
+     */
+    public final HashMap<String, String> getHeaderkeys() {
+        return HEADERKEYS;
+    }
+
+    /**
+     *为不同的BaseUrl配置headervalue识别
+     */
+    public final Configurator withHeaderValues(String headerKey,String headerValues){
+        HEADERKEYS.put(headerKey,headerValues);
+        return this;
     }
 
     public final void configure(){

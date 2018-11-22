@@ -24,10 +24,16 @@ public class RxRestClientBuilder {
     private HashMap<String, Object> mParams;
     private String mUrl;
     private RequestBody mBody;
+    private String mHeaderKey;
 
     private File mFile;
 
     public RxRestClientBuilder() {
+    }
+
+    public final RxRestClientBuilder headerKey(String headerKey){
+        this.mHeaderKey = headerKey;
+        return this;
     }
 
     public final RxRestClientBuilder params(HashMap<String, Object> params){
@@ -55,6 +61,6 @@ public class RxRestClientBuilder {
     }
 
     public final RxRestClient build(){
-        return new RxRestClient(mParams,mUrl,mBody,mFile);
+        return new RxRestClient(mHeaderKey,mParams,mUrl,mBody,mFile);
     }
 }

@@ -2,6 +2,7 @@ package daiw.com.core.rx;
 
 import java.util.Map;
 
+import daiw.com.core.net.Constancts;
 import io.reactivex.Observable;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -12,6 +13,7 @@ import retrofit2.http.DELETE;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
@@ -31,36 +33,36 @@ import retrofit2.http.Url;
 public interface RxRestService {
 
     @GET
-    Observable<String> get(@Url String url, @QueryMap Map<String, Object> params);
+    Observable<String> get(@Header(Constancts.URL_HEADER_KEY) String headerKey, @Url String url, @QueryMap Map<String, Object> params);
 
     @FormUrlEncoded
     @POST
-    Observable<String> post(@Url String url, @FieldMap Map<String, Object> params);
+    Observable<String> post(@Header(Constancts.URL_HEADER_KEY) String headerKey, @Url String url, @FieldMap Map<String, Object> params);
 
     @FormUrlEncoded
     @PUT
-    Observable<String> put(@Url String url, @FieldMap Map<String, Object> params);
+    Observable<String> put(@Header(Constancts.URL_HEADER_KEY) String headerKey, @Url String url, @FieldMap Map<String, Object> params);
 
     @DELETE
-    Observable<String> delete(@Url String url, @QueryMap Map<String, Object> params);
+    Observable<String> delete(@Header(Constancts.URL_HEADER_KEY) String headerKey, @Url String url, @QueryMap Map<String, Object> params);
 
     /**
-     *下载是直接到内存,所以需要 @Streaming
+     * 下载是直接到内存,所以需要 @Streaming
      */
     @Streaming
     @GET
-    Observable<ResponseBody> download(@Url String url, @QueryMap Map<String, Object> params);
+    Observable<ResponseBody> download(@Header(Constancts.URL_HEADER_KEY) String headerKey, @Url String url, @QueryMap Map<String, Object> params);
 
     @Multipart
     @POST
-    Observable<String> upload(@Url String url, @Part MultipartBody.Part file);
+    Observable<String> upload(@Header(Constancts.URL_HEADER_KEY) String headerKey, @Url String url, @Part MultipartBody.Part file);
 
     /**
-     *原始数据
+     * 原始数据
      */
     @POST
-    Observable<String> postRaw(@Url String url, @Body RequestBody body);
+    Observable<String> postRaw(@Header(Constancts.URL_HEADER_KEY) String headerKey, @Url String url, @Body RequestBody body);
 
     @PUT
-    Observable<String> putRaw(@Url String url, @Body RequestBody body);
+    Observable<String> putRaw(@Header(Constancts.URL_HEADER_KEY) String headerKey, @Url String url, @Body RequestBody body);
 }

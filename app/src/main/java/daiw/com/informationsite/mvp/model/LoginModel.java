@@ -7,7 +7,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import daiw.com.core.rx.RxRestClient;
+import daiw.com.informationsite.R;
 import daiw.com.informationsite.bean.LoginResponse;
+import daiw.com.informationsite.http.ApiConstants;
+import daiw.com.informationsite.http.result.HttpResultChange;
 import daiw.com.informationsite.interf.login.ILoginContract;
 import daiw.com.informationsite.interf.mvp.IModel;
 import io.reactivex.Observable;
@@ -34,27 +37,14 @@ public class LoginModel implements ILoginContract.ILoginModel {
         HashMap<String, Object> params = new HashMap<>();
         params.put("username", username);
         params.put("password", password);
-        return RxRestClient.create()
-                .url("user/login")
-                .params(params)
-                .build()
-                .post()
-                .flatMap(new Function<String, ObservableSource<LoginResponse>>() {
-                    @Override
-                    public ObservableSource<LoginResponse> apply(String s) throws Exception {
-                        final LoginResponse loginResponse = new Gson().fromJson(s, LoginResponse.class);
-                        if (loginResponse == null) {
-                            return null;
-                        }
-                        return Observable.create(new ObservableOnSubscribe<LoginResponse>() {
-                            @Override
-                            public void subscribe(ObservableEmitter<LoginResponse> emitter) throws Exception {
-                                emitter.onNext(loginResponse);
-                            }
-                        });
-                    }
-                }).subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
+        return HttpResultChange.getHttpResultChange(RxRestClient.create()
+                        .headerKey(ApiConstants.URL_HEADER_KEY_1)
+                        .url(ApiConstants.URL_LOGIN)
+                        .params(params)
+                        .build()
+                        .post(), LoginResponse.class)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override

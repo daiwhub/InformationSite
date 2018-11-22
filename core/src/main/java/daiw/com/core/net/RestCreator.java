@@ -37,9 +37,12 @@ public final class RestCreator {
    private static final class  OKHttpClientHolder{
        private static final int TIME_OUT = 60;
        private static final OkHttpClient OK_HTTP_CLIENT = new OkHttpClient.Builder()
+               .addInterceptor(new BaseUrlInterceptor())
                .connectTimeout(TIME_OUT,TimeUnit.SECONDS)
                .build();
    }
+
+
 
    /**
     *提供接口让调用者得到retrofit对象
