@@ -2,6 +2,8 @@ package daiw.com.informationsite.http.result;
 
 import com.google.gson.Gson;
 
+import org.json.JSONObject;
+
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
@@ -18,11 +20,11 @@ import io.reactivex.functions.Function;
  */
 public class HttpResultChange {
 
-    public static final  <R> Observable<R> getHttpResultChange(Observable<String> observable, final Class<R> cls) {
-        Observable<R> observable1 = observable.flatMap(new Function<String, ObservableSource<R>>() {
+    public static final  <R> Observable<R> getHttpResultChange(Observable<JSONObject> observable, final Class<R> cls) {
+        Observable<R> observable1 = observable.flatMap(new Function<JSONObject, ObservableSource<R>>() {
             @Override
-            public ObservableSource<R> apply(String s) throws Exception {
-                final R r = new Gson().fromJson(s, cls);
+            public ObservableSource<R> apply(JSONObject jsonObject) throws Exception {
+                final R r = new Gson().fromJson(jsonObject.toString(), cls);
                 if (r == null) {
                     return null;
                 }

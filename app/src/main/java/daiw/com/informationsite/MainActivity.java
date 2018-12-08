@@ -1,18 +1,14 @@
 package daiw.com.informationsite;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.liulishuo.filedownloader.FileDownloader;
 
 import daiw.com.informationsite.api.constans.Constans;
-import daiw.com.informationsite.login.model.ModelLogin;
-import daiw.com.informationsite.login.percenter.PercenterLogin;
-import daiw.com.informationsite.login.view.ILoginView;
 import daiw.com.informationsite.manager.StartActivityManager;
 import daiw.com.informationsite.utils.download.files.DownLoadSplashAd;
-import daiw.com.informationsite.utils.log.LogoutUtils;
 
 public class MainActivity extends AppCompatActivity {
 

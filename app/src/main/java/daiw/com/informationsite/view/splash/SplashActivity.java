@@ -43,7 +43,7 @@ public class SplashActivity extends AppCompatActivity implements PermissionsRequ
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTheme(R.style.AppBaseTheme);
+        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 

@@ -1,5 +1,7 @@
 package daiw.com.core.rx;
 
+import org.json.JSONObject;
+
 import java.io.File;
 import java.util.HashMap;
 
@@ -51,9 +53,9 @@ public class RxRestClient {
         return new RxRestClientBuilder();
     }
 
-    private Observable<String> request(HttpMethod httpMethod) {
+    private Observable<JSONObject> request(HttpMethod httpMethod) {
         final RxRestService service = RestCreator.getRxRestService();
-        Observable<String> observable = null;
+        Observable<JSONObject> observable = null;
         switch (httpMethod) {
             case GET:
                 observable = service.get(HEADERKEY, URL, PARAMS);
@@ -81,23 +83,23 @@ public class RxRestClient {
         return observable;
     }
 
-    public final Observable<String> get() {
+    public final Observable<JSONObject> get() {
         return request(HttpMethod.GET);
     }
 
-    public final Observable<String> post() {
+    public final Observable<JSONObject> post() {
         return request(HttpMethod.POST);
     }
 
-    public final Observable<String> put() {
+    public final Observable<JSONObject> put() {
         return request(HttpMethod.PUT);
     }
 
-    public final Observable<String> delete() {
+    public final Observable<JSONObject> delete() {
         return request(HttpMethod.DELETE);
     }
 
-    public final Observable<String> upload() {
+    public final Observable<JSONObject> upload() {
         return request(HttpMethod.UPLOAD);
     }
 }

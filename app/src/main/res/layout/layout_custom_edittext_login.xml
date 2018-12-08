@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/layout_custom_edit_login_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/vector_drawable_svg_login_username"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/layout_custom_edit_login_edit"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/layout_custom_edit_login_edit"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:paddingLeft="@dimen/dp_15"
+        app:layout_constraintLeft_toRightOf="@id/layout_custom_edit_login_img"
+        app:layout_constraintBottom_toBottomOf="@id/layout_custom_edit_login_img"
+        app:layout_constraintRight_toLeftOf="@id/layout_custom_edit_delete_ll"
+        app:layout_constraintTop_toTopOf="@id/layout_custom_edit_login_img" />
+
+    <LinearLayout
+        android:id="@+id/layout_custom_edit_delete_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_0"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/dp_10"
+        android:paddingRight="@dimen/dp_10"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/layout_custom_edit_login_edit"
+        app:layout_constraintLeft_toRightOf="@id/layout_custom_edit_login_edit"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/layout_custom_edit_login_edit">
+
+        <ImageView
+            android:id="@+id/layout_custom_edit_delete_img"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/vector_drawable_icon_delete" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="1px"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="@color/line"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_custom_edit_login_edit" />
+
+</android.support.constraint.ConstraintLayout>

@@ -10,4 +10,8 @@
     <color name="text_333333">#333333</color>
     <color name="text_666666">#666666</color>
     <color name="text_999999">#999999</color>
+
+    <color name="line">#DCDCDC</color>
+
+    <color name="title_black">#222222</color>
 </resources>

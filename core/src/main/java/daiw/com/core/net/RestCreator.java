@@ -8,7 +8,7 @@ import daiw.com.core.rx.RxRestService;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import retrofit2.converter.scalars.ScalarsConverterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /****************************
  * 类描述：
@@ -28,7 +28,7 @@ public final class RestCreator {
        private static final String BASE_URL = ProjectInit.getConfiguration(ConfigKeys.API_HOST.name());
        private static final Retrofit REST_SERVICE = new Retrofit.Builder()
                .baseUrl(BASE_URL)
-               .addConverterFactory(ScalarsConverterFactory.create())
+               .addConverterFactory(GsonConverterFactory.create())
                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                .client(OKHttpClientHolder.OK_HTTP_CLIENT)
                .build();

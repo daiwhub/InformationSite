@@ -2,7 +2,11 @@ package daiw.com.informationsite.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
+
+import daiw.com.informationsite.utils.ToastUtil;
 
 /****************************
  * 类描述：
@@ -12,11 +16,11 @@ import android.support.v7.app.AppCompatActivity;
  *
  *         ***************************
  */
-public class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
 
     private int contentView;
 
-    public BaseActivity(int contentView){
+    public BaseActivity(int contentView) {
         this.contentView = contentView;
     }
 
@@ -25,5 +29,32 @@ public class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(contentView);
+        initToolbar();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+     /*
+      * @Description : 初始化ToolBar
+      * @Params :
+      * @Author : daiw
+      * @Date : 2018/11/26
+      */
+    public abstract void initToolbar();
+
+    public void showShortToast(String message){
+        ToastUtil.show(this,message);
+    }
+    public void showShortToast(int message){
+        ToastUtil.show(this,message);
     }
 }

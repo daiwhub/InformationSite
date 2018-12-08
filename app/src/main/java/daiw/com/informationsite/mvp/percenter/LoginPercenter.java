@@ -1,5 +1,7 @@
 package daiw.com.informationsite.mvp.percenter;
 
+import android.text.TextUtils;
+
 import daiw.com.informationsite.App;
 import daiw.com.informationsite.R;
 import daiw.com.informationsite.base.BasePercenter;
@@ -46,6 +48,26 @@ public class LoginPercenter extends BasePercenter {
                 }
             }
         }));
+    }
+     /*
+      * @Description : 数据校验
+      * @Params :
+      * @Author : daiw
+      * @Date : 2018/12/9
+      */
+    public boolean checkData(String userName,String passWord){
+        if(mView == null){
+            return false;
+        }
+        if(TextUtils.isEmpty(userName)){
+           mView.showToast(R.string.the_account_cannot_be_empty);
+           return false;
+        }
+        if(TextUtils.isEmpty(passWord)){
+            mView.showToast(R.string.the_password_cannot_be_empty);
+            return false;
+        }
+        return true;
     }
 
 }

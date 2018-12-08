@@ -1,5 +1,7 @@
 package daiw.com.core.rx;
 
+import org.json.JSONObject;
+
 import java.util.Map;
 
 import daiw.com.core.net.Constancts;
@@ -33,18 +35,18 @@ import retrofit2.http.Url;
 public interface RxRestService {
 
     @GET
-    Observable<String> get(@Header(Constancts.URL_HEADER_KEY) String headerKey, @Url String url, @QueryMap Map<String, Object> params);
+    Observable<JSONObject> get(@Header(Constancts.URL_HEADER_KEY) String headerKey, @Url String url, @QueryMap Map<String, Object> params);
 
     @FormUrlEncoded
     @POST
-    Observable<String> post(@Header(Constancts.URL_HEADER_KEY) String headerKey, @Url String url, @FieldMap Map<String, Object> params);
+    Observable<JSONObject> post(@Header(Constancts.URL_HEADER_KEY) String headerKey, @Url String url, @FieldMap Map<String, Object> params);
 
     @FormUrlEncoded
     @PUT
-    Observable<String> put(@Header(Constancts.URL_HEADER_KEY) String headerKey, @Url String url, @FieldMap Map<String, Object> params);
+    Observable<JSONObject> put(@Header(Constancts.URL_HEADER_KEY) String headerKey, @Url String url, @FieldMap Map<String, Object> params);
 
     @DELETE
-    Observable<String> delete(@Header(Constancts.URL_HEADER_KEY) String headerKey, @Url String url, @QueryMap Map<String, Object> params);
+    Observable<JSONObject> delete(@Header(Constancts.URL_HEADER_KEY) String headerKey, @Url String url, @QueryMap Map<String, Object> params);
 
     /**
      * 下载是直接到内存,所以需要 @Streaming
@@ -55,14 +57,14 @@ public interface RxRestService {
 
     @Multipart
     @POST
-    Observable<String> upload(@Header(Constancts.URL_HEADER_KEY) String headerKey, @Url String url, @Part MultipartBody.Part file);
+    Observable<JSONObject> upload(@Header(Constancts.URL_HEADER_KEY) String headerKey, @Url String url, @Part MultipartBody.Part file);
 
     /**
      * 原始数据
      */
     @POST
-    Observable<String> postRaw(@Header(Constancts.URL_HEADER_KEY) String headerKey, @Url String url, @Body RequestBody body);
+    Observable<JSONObject> postRaw(@Header(Constancts.URL_HEADER_KEY) String headerKey, @Url String url, @Body RequestBody body);
 
     @PUT
-    Observable<String> putRaw(@Header(Constancts.URL_HEADER_KEY) String headerKey, @Url String url, @Body RequestBody body);
+    Observable<JSONObject> putRaw(@Header(Constancts.URL_HEADER_KEY) String headerKey, @Url String url, @Body RequestBody body);
 }

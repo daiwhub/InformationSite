@@ -3,7 +3,6 @@ package daiw.com.informationsite.interf.login;
 import daiw.com.informationsite.bean.LoginResponse;
 import daiw.com.informationsite.interf.mvp.IModel;
 import daiw.com.informationsite.interf.mvp.IView;
-import daiw.com.informationsite.login.model.ILoginModel;
 import io.reactivex.Observable;
 
 /****************************
@@ -20,7 +19,6 @@ public interface ILoginContract {
 
         void loginError(String errorMessage);
         void dissmissDialog();
-
     }
 
     interface ILoginModel extends IModel {
