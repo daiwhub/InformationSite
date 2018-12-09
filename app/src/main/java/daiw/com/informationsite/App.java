@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import daiw.com.core.app.ProjectInit;
 import daiw.com.core.net.Constancts;
 import daiw.com.informationsite.http.ApiConstants;
+import daiw.com.informationsite.interf.PermissionsRequestInterf;
+import daiw.com.informationsite.utils.hook.HookUtils;
 
 /****************************
  * 类描述：
@@ -27,6 +29,19 @@ public class App extends Application {
 
         context = getApplicationContext();
         initRetrofit();
+        //初始化Hook集中式登录
+//        initHookUtils();
+    }
+     /*
+      * @Description : 初始化Hook集中式登录
+      * @Params :
+      * @Author : daiw
+      * @Date : 2018/12/9
+      */
+    private void initHookUtils(){
+        HookUtils hookUtils = new HookUtils();
+        hookUtils.hookSatrtActivity(this);
+        hookUtils.hooKMh();
     }
 
     private void initRetrofit() {

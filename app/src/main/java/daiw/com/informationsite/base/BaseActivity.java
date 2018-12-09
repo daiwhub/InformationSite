@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import daiw.com.informationsite.utils.ToastUtil;
+import daiw.com.informationsite.utils.log.LogoutUtils;
 
 /****************************
  * 类描述：
@@ -17,6 +18,7 @@ import daiw.com.informationsite.utils.ToastUtil;
  *         ***************************
  */
 public abstract class BaseActivity extends AppCompatActivity {
+    protected static final String TAG = BaseActivity.class.getCanonicalName();
 
     private int contentView;
 
@@ -27,6 +29,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        LogoutUtils.d(TAG,"topactivity-->"+this.getClass().getCanonicalName());
 
         setContentView(contentView);
         initToolbar();
