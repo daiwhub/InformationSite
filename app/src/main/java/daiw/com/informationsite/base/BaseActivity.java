@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
+import daiw.com.informationsite.manager.AppManager;
 import daiw.com.informationsite.utils.ToastUtil;
 import daiw.com.informationsite.utils.log.LogoutUtils;
 
@@ -30,7 +31,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         LogoutUtils.d(TAG,"topactivity-->"+this.getClass().getCanonicalName());
-
+        AppManager.getInstance().addActivity(this);
         setContentView(contentView);
         initToolbar();
     }

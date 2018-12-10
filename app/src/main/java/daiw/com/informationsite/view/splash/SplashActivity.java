@@ -1,6 +1,7 @@
 package daiw.com.informationsite.view.splash;
 
 import android.Manifest;
+import android.content.Intent;
 import android.os.Build;
 import android.os.CountDownTimer;
 import android.os.Environment;
@@ -14,9 +15,11 @@ import android.widget.TextView;
 
 import java.io.File;
 
+import daiw.com.informationsite.MainActivity;
 import daiw.com.informationsite.R;
 import daiw.com.informationsite.api.constans.Constans;
 import daiw.com.informationsite.interf.PermissionsRequestInterf;
+import daiw.com.informationsite.manager.AppManager;
 import daiw.com.informationsite.manager.PermissionManager;
 import daiw.com.informationsite.manager.StartActivityManager;
 import daiw.com.informationsite.utils.AppMessage;
@@ -47,6 +50,8 @@ public class SplashActivity extends AppCompatActivity implements PermissionsRequ
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+        AppManager.getInstance().addActivity(this);
+
         initVariable();
         initView();
 
@@ -63,8 +68,11 @@ public class SplashActivity extends AppCompatActivity implements PermissionsRequ
                     downTimer.cancel();
                 }
                 //跳转首页
-                StartActivityManager.startManiActivity(SplashActivity.this);
-                finish();
+//                StartActivityManager.startManiActivity(SplashActivity.this);
+                Intent intent = new Intent(SplashActivity.this,MainActivity.class);
+                startActivity(intent);
+                overridePendingTransition(0,0);
+//                finish();
             }
         });
     }
@@ -89,8 +97,11 @@ public class SplashActivity extends AppCompatActivity implements PermissionsRequ
             @Override
             public void onFinish() {
                 //跳转首页
-                StartActivityManager.startManiActivity(SplashActivity.this);
-                finish();
+//                StartActivityManager.startManiActivity(SplashActivity.this);
+                Intent intent = new Intent(SplashActivity.this,MainActivity.class);
+                startActivity(intent);
+                overridePendingTransition(0,0);
+//                finish();
             }
         }.start();
 
