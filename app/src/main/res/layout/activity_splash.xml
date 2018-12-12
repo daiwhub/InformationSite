@@ -29,11 +29,11 @@
         android_custom:roundProgressColor="@android:color/holo_blue_bright"
         android_custom:roundWidth="@dimen/dp_2"
         android_custom:textColor="@color/text_666666"
-        android_custom:textSize="@dimen/sp_14"
+        android_custom:textSize="@dimen/sp_12"
         android_custom:text="跳过"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_30"
         android:layout_marginRight="@dimen/dp_15"/>
 
         <ImageView

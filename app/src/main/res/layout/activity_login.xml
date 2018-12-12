@@ -9,6 +9,7 @@
     tools:context=".view.login.LoginActivity">
 
     <!--登录-->
+
     <TextView
         android:id="@+id/ac_login_title_tv"
         android:layout_width="wrap_content"
@@ -87,7 +88,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/dp_100"
         android:text="@string/register"
-        android:textColor="@color/text_333333"
+        android:textColor="@color/white"
         android:textSize="@dimen/sp_16"
         android:layout_marginLeft="@dimen/dp_80"
         android:layout_marginRight="@dimen/dp_80"

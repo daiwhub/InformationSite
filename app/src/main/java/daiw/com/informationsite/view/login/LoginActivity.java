@@ -13,6 +13,7 @@ import daiw.com.informationsite.view.custom.edittext.CustomEditTextLogin;
 
 public class LoginActivity extends MvpBaseActivity<LoginPercenter> implements ILoginContract.ILoginView {
 
+
     private Button loginBtn;
     private Button registerBtn;
 
@@ -26,16 +27,10 @@ public class LoginActivity extends MvpBaseActivity<LoginPercenter> implements IL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initView();
         setListener();
     }
 
-    @Override
-    public void initToolbar() {
-
-    }
-
-    private void initView() {
+    public void initView() {
         //登录
         loginBtn = findViewById(R.id.ac_login_to_login_btn);
         //注册

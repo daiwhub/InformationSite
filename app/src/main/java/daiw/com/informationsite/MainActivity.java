@@ -2,6 +2,7 @@ package daiw.com.informationsite;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
 
 import com.liulishuo.filedownloader.FileDownloader;
@@ -31,7 +32,12 @@ public class MainActivity extends BaseActivity {
         });
 
         initFileDownloader();
-        DownLoadSplashAd.downLoadSplashAd(getApplicationContext(),Constans.URL_AD_SPLASH);
+        DownLoadSplashAd.downLoadSplashAd(getApplicationContext(), Constans.URL_AD_SPLASH);
+    }
+
+    @Override
+    protected void initView() {
+
     }
 
     @Override
@@ -48,17 +54,32 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        AppManager.getInstance().removeActivityFromName(SplashActivity.class.getSimpleName());
     }
 
     /*
-      * @Description :初始化下载文件
-      * @Params :
-      * @Author : daiw
-      * @Date : 2018/11/7
-      */
-    private void initFileDownloader(){
+     * @Description :初始化下载文件
+     * @Params :
+     * @Author : daiw
+     * @Date : 2018/11/7
+     */
+    private void initFileDownloader() {
         FileDownloader.setup(this);
     }
 
+    private long firstTime = 0;
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN){
+            long secondTime = System.currentTimeMillis();
+            if(secondTime - firstTime > 2000){
+                showShortToast(R.string.exit_again);
+                firstTime = secondTime;
+                return true;
+            }else {
+//                AppManager.getInstance().removeActivityFromName(SplashActivity.class.getSimpleName());
+                finish();
+            }
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 }

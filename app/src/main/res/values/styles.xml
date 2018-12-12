@@ -5,7 +5,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@android:color/transparent</item>
-        <!--<item name="android:windowAnimationStyle">@style/windowAnimation</item>-->
+        <item name="android:windowAnimationStyle">@style/windowAnimation</item>
         <!-- Set menu background and text color -->
         <item name="android:itemBackground">@color/white</item>
         <item name="android:textColor">@color/title_black</item>
@@ -21,6 +21,14 @@
         <item name="android:activityCloseEnterAnimation">@anim/push_right_in</item>
         <item name="android:activityCloseExitAnimation">@anim/push_right_out</item>
     </style>
+
+    <!-- Toolbar样式 -->
+    <style name="AppTheme.Toolbar" parent="Widget.AppCompat.ActionBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_48</item>
+        <item name="android:theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+    </style>
+
     <!--启动页主题-->
     <style name="SplashTheme" parent="AppTheme">
         <item name="android:windowBackground">@drawable/bg_splash</item>

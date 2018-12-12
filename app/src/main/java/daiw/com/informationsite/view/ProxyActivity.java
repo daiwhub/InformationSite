@@ -17,6 +17,11 @@ public class ProxyActivity extends BaseActivity {
     }
 
     @Override
+    protected void initView() {
+
+    }
+
+    @Override
     public void initToolbar() {
 
     }

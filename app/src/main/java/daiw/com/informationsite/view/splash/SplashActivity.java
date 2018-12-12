@@ -68,11 +68,9 @@ public class SplashActivity extends AppCompatActivity implements PermissionsRequ
                     downTimer.cancel();
                 }
                 //跳转首页
-//                StartActivityManager.startManiActivity(SplashActivity.this);
-                Intent intent = new Intent(SplashActivity.this,MainActivity.class);
-                startActivity(intent);
+                StartActivityManager.startManiActivity(SplashActivity.this);
                 overridePendingTransition(0,0);
-//                finish();
+                finish();
             }
         });
     }
@@ -97,11 +95,9 @@ public class SplashActivity extends AppCompatActivity implements PermissionsRequ
             @Override
             public void onFinish() {
                 //跳转首页
-//                StartActivityManager.startManiActivity(SplashActivity.this);
-                Intent intent = new Intent(SplashActivity.this,MainActivity.class);
-                startActivity(intent);
+                StartActivityManager.startManiActivity(SplashActivity.this);
                 overridePendingTransition(0,0);
-//                finish();
+                finish();
             }
         }.start();
 
@@ -207,4 +203,5 @@ public class SplashActivity extends AppCompatActivity implements PermissionsRequ
     public void onError(int errorCode) {
         ToastUtil.show(getApplicationContext(),"相关权限获取失败，请到设置中给与相关权限");
     }
+
 }
