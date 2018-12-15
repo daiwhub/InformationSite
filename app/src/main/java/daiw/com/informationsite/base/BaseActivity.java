@@ -1,19 +1,16 @@
 package daiw.com.informationsite.base;
 
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import daiw.com.informationsite.R;
 import daiw.com.informationsite.manager.AppManager;
@@ -22,7 +19,7 @@ import daiw.com.informationsite.utils.ToastUtil;
 import daiw.com.informationsite.utils.log.LogoutUtils;
 
 /****************************
- * 类描述：
+ * 类描述：基类Activity
  *
  * @author: daiw
  * @time: 2018/11/19  11:51 PM
@@ -34,7 +31,12 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     private LinearLayout mRootLinearLayout;
 
-    private Toolbar mToolbar;
+    private ConstraintLayout toolView;
+    private TextView mToolbarBackTv;
+    private TextView mToolbarTitleTv;
+    private TextView mToolbarRightTv;
+
+    private boolean isShowToolbar = true;
 
     private int contentView = 0;
 
@@ -42,18 +44,18 @@ public abstract class BaseActivity extends AppCompatActivity {
         this.contentView = contentView;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         LogoutUtils.d(TAG,"topactivity-->"+this.getClass().getCanonicalName());
         AppManager.getInstance().addActivity(this);
 
-//        setContentView(contentView);
         initLayout();
 
         initView();
-        initToolbar();
+        if(isShowToolbar) {
+            initToolbar();
+        }
     }
 
     private void initLayout(){
@@ -67,13 +69,21 @@ public abstract class BaseActivity extends AppCompatActivity {
             ConstraintLayout.LayoutParams childLp = new ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.MATCH_PARENT,ConstraintLayout.LayoutParams.MATCH_PARENT);
             childView.setLayoutParams(childLp);
 
-            LinearLayout toolView = (LinearLayout) LayoutInflater.from(this).inflate(R.layout.layout_toolbar, null);
-            LinearLayout.LayoutParams toolbarLp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            toolView.setLayoutParams(toolbarLp);
+            if(isShowToolbar) {
+                toolView = (ConstraintLayout) LayoutInflater.from(this).inflate(R.layout.layout_toolbar, null);
+                LinearLayout.LayoutParams toolbarLp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                toolView.setLayoutParams(toolbarLp);
 
-            mToolbar = toolView.findViewById(R.id.login_toolbar);
+                //返回
+                mToolbarBackTv = toolView.findViewById(R.id.toolbar_back_btn);
+                //标题
+                mToolbarTitleTv = toolView.findViewById(R.id.toolbar_title_tv);
+                //右按钮
+                mToolbarRightTv = toolView.findViewById(R.id.toolbar_right_tv);
 
-            mRootLinearLayout.addView(toolView);
+                mRootLinearLayout.addView(toolView);
+            }
+
             mRootLinearLayout.addView(childView);
 
             setContentView(mRootLinearLayout);
@@ -86,20 +96,80 @@ public abstract class BaseActivity extends AppCompatActivity {
      * @Author : daiw
      * @Date : 2018/11/26
      */
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void initToolbar() {
         //导航栏沉浸式
         StatusBarUtil.immersive(this);
-        StatusBarUtil.setPaddingSmart(this, mToolbar);
-        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        //设置状态栏白底黑字
+        StatusBarUtil.darkMode(this,true);
+        StatusBarUtil.setPaddingSmart(this, toolView);
+        //返回
+        mToolbarBackTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressedSupport();
             }
         });
+        //右按钮
+        mToolbarRightTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickToolbarRight(v);
+            }
+        });
+    }
+
+     /*
+      * @Description : 是否显示标题栏
+      * @Params :
+      * @Author : daiw
+      * @Date : 2018/12/14
+      */
+    public void isShowToolbar(boolean isShowToolbar){
+        this.isShowToolbar = isShowToolbar;
+    }
+     /*
+      * @Description : 设置标题栏
+      * @Params :
+      * @Author : daiw
+      * @Date : 2018/12/13
+      */
+     public void setToolbarTitle(int resource) {
+        if(mToolbarRightTv == null){
+            return;
+        }
+        if(mToolbarTitleTv.getVisibility() != View.VISIBLE){
+            mToolbarTitleTv.setVisibility(View.VISIBLE);
+        }
+        //标题
+        mToolbarTitleTv.setText(resource);
+    }
+     /*
+      * @Description : 设置标题栏
+      * @Params :
+      * @Author : daiw
+      * @Date : 2018/12/13
+      */
+     public void setToolbarTitle(String resource) {
+        if(mToolbarRightTv == null){
+            return;
+        }
+        if(mToolbarTitleTv.getVisibility() != View.VISIBLE){
+            mToolbarTitleTv.setVisibility(View.VISIBLE);
+        }
+        //标题
+        mToolbarTitleTv.setText(resource);
     }
 
     protected abstract void initView();
+     /*
+      * @Description : 功能标题栏右侧按钮（子类需要时重写）
+      * @Params :
+      * @Author : daiw
+      * @Date : 2018/12/13
+      */
+    public void clickToolbarRight(View v){
+
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

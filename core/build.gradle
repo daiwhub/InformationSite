@@ -32,6 +32,7 @@ dependencies {
     implementation rootProject.ext.dependencies["design"]
     implementation rootProject.ext.dependencies["constraint-layout"]
 
+
     testImplementation rootProject.ext.dependencies["junit"]
     testImplementation rootProject.ext.dependencies["shadows-multidex"] //支持Multidex功能
     androidTestImplementation rootProject.ext.dependencies["runner"]
@@ -51,5 +52,8 @@ dependencies {
     api rootProject.ext.dependencies["adapter-rxjava2"]
     //okhttp3
     api rootProject.ext.dependencies["okhttp"]
+    api rootProject.ext.dependencies["logging-interceptor"]
     api rootProject.ext.dependencies["gson"]
+
+    api rootProject.ext.dependencies["logger"]
 }

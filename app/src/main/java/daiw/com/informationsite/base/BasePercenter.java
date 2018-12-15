@@ -1,20 +1,11 @@
 package daiw.com.informationsite.base;
 
-import org.reactivestreams.Subscription;
-
-import daiw.com.informationsite.interf.login.ILoginContract;
 import daiw.com.informationsite.interf.mvp.IModel;
 import daiw.com.informationsite.interf.mvp.IPercenter;
 import daiw.com.informationsite.interf.mvp.IView;
-import io.reactivex.CompletableObserver;
-import io.reactivex.CompletableOnSubscribe;
-import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
-import io.reactivex.ObservableOnSubscribe;
-import io.reactivex.Observer;
+import daiw.com.informationsite.mvp.contract.login.ILoginContract;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
 
 /****************************
  * 类描述：
@@ -24,7 +15,7 @@ import io.reactivex.functions.Consumer;
  *
  *         ***************************
  */
-public class BasePercenter<V extends ILoginContract.ILoginView,M extends ILoginContract.ILoginModel> implements IPercenter {
+public class BasePercenter<V extends IView,M extends IModel> implements IPercenter {
 
     private CompositeDisposable mCompositeDisposable;
 

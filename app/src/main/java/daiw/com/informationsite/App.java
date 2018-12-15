@@ -3,6 +3,9 @@ package daiw.com.informationsite;
 import android.app.Application;
 import android.content.Context;
 
+import com.orhanobut.logger.AndroidLogAdapter;
+import com.orhanobut.logger.Logger;
+
 import java.util.ArrayList;
 
 import daiw.com.core.app.ProjectInit;
@@ -45,6 +48,8 @@ public class App extends Application {
     }
 
     private void initRetrofit() {
+        Logger.addLogAdapter(new AndroidLogAdapter());
+
         ArrayList<String> headerValues = new ArrayList<>();
         headerValues.add("wanandroid");
         headerValues.add("juhe");

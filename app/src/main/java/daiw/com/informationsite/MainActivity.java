@@ -1,6 +1,7 @@
 package daiw.com.informationsite;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -13,17 +14,25 @@ import daiw.com.informationsite.manager.AppManager;
 import daiw.com.informationsite.manager.StartActivityManager;
 import daiw.com.informationsite.utils.download.files.DownLoadSplashAd;
 import daiw.com.informationsite.view.splash.SplashActivity;
-
+/****************************
+ * 类描述：首页
+ *
+ * @author: daiw
+ * @time: 2018/11/19  11:51 PM
+ *
+ *         ***************************
+ */
 public class MainActivity extends BaseActivity {
 
     public MainActivity() {
         super(R.layout.activity_main);
+        //隐藏顶部导航栏
+        isShowToolbar(false);
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         findViewById(R.id.login).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,11 +46,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-
-    }
-
-    @Override
-    public void initToolbar() {
 
     }
 

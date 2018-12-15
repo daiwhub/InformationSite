@@ -13,4 +13,6 @@ public interface IView {
     void showToast(String message);
     void showToast(int message);
 
+    void showPragress();
+    void dissPragress();
 }

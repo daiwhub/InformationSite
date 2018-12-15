@@ -27,10 +27,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
-            android:launchMode="singleTask"></activity>
-        <activity android:name=".view.login.LoginActivity"></activity>
-        <activity android:name=".view.ProxyActivity"></activity>
+        <activity
+            android:name=".MainActivity"
+            android:launchMode="singleTask" />
+        <activity android:name=".view.login.LoginActivity" />
+        <activity android:name=".view.ProxyActivity" />
+        <activity android:name=".view.register.RegisterActivity"></activity>
     </application>
 
 </manifest>

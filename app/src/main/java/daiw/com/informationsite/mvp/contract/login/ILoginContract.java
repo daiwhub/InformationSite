@@ -1,4 +1,4 @@
-package daiw.com.informationsite.interf.login;
+package daiw.com.informationsite.mvp.contract.login;
 
 import daiw.com.informationsite.bean.LoginResponse;
 import daiw.com.informationsite.interf.mvp.IModel;
@@ -16,9 +16,8 @@ import io.reactivex.Observable;
 public interface ILoginContract {
 
     interface ILoginView extends IView{
-
+        void loginSuccess();
         void loginError(String errorMessage);
-        void dissmissDialog();
     }
 
     interface ILoginModel extends IModel {

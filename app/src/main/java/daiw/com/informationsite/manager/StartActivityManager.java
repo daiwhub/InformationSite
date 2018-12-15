@@ -5,6 +5,7 @@ import android.content.Intent;
 
 import daiw.com.informationsite.MainActivity;
 import daiw.com.informationsite.view.login.LoginActivity;
+import daiw.com.informationsite.view.register.RegisterActivity;
 
 /****************************
  * 类描述：
@@ -37,5 +38,15 @@ public class StartActivityManager {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }
-
+     /*
+      * @Description : 跳转注册
+      * @Params :
+      * @Author : daiw
+      * @Date : 2018/12/15
+      */
+    public static void startRegisterActivity(Context context){
+        Intent intent = new Intent(context,RegisterActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+    }
 }
