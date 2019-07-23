@@ -19,8 +19,12 @@ public class Constans {
     /**
      * 启动页广告下载地址
      */
-    public static final String URL_AD_SPLASH = "https://ws1.sinaimg.cn/large/0065oQSqly1fw0vdlg6xcj30j60mzdk7.jpg";
-    public static final String URL_AD_SPLASH_1 = "https://ws1.sinaimg.cn/large/0065oQSqgy1fwyf0wr8hhj30ie0nhq6p.jpg";
+    public static final String URL_AD_SPLASH = "https://ws1.sinaimg.cn/large/0065oQSqgy1fwyf0wr8hhj30ie0nhq6p.jpg";
+    public static final String URL_AD_SPLASH_1 = "https://ws1.sinaimg.cn/large/0065oQSqly1fw0vdlg6xcj30j60mzdk7.jpg";
+    public static final String URL_AD_SPLASH_2 = "https://ws1.sinaimg.cn/large/0065oQSqgy1fze94uew3jj30qo10cdka.jpg";
+    public static final String URL_AD_SPLASH_3 = "https://ws1.sinaimg.cn/large/0065oQSqly1fytdr77urlj30sg10najf.jpg";
+    public static final String URL_AD_SPLASH_4 = "https://ws1.sinaimg.cn/large/0065oQSqly1fymj13tnjmj30r60zf79k.jpg";
+    public static final String URL_AD_SPLASH_5 = "https://ws1.sinaimg.cn/large/0065oQSqgy1fy58bi1wlgj30sg10hguu.jpgg";
     /**
      * 启动页广告存储路径
      */

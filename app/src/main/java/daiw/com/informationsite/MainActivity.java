@@ -8,6 +8,8 @@ import android.view.View;
 
 import com.liulishuo.filedownloader.FileDownloader;
 
+import java.util.Random;
+
 import daiw.com.informationsite.api.constans.Constans;
 import daiw.com.informationsite.base.BaseActivity;
 import daiw.com.informationsite.manager.AppManager;
@@ -24,6 +26,8 @@ import daiw.com.informationsite.view.splash.SplashActivity;
  */
 public class MainActivity extends BaseActivity {
 
+    private String[] urls = {Constans.URL_AD_SPLASH_1,Constans.URL_AD_SPLASH_2,
+            Constans.URL_AD_SPLASH_3,Constans.URL_AD_SPLASH_4,Constans.URL_AD_SPLASH_5};
     public MainActivity() {
         super(R.layout.activity_main);
         //隐藏顶部导航栏
@@ -41,7 +45,10 @@ public class MainActivity extends BaseActivity {
         });
 
         initFileDownloader();
-        DownLoadSplashAd.downLoadSplashAd(getApplicationContext(), Constans.URL_AD_SPLASH);
+        int index = new Random().nextInt(4) + 1;
+        System.out.println("index = "+index);
+        String url = urls[index];
+        DownLoadSplashAd.downLoadSplashAd(getApplicationContext(), url);
     }
 
     @Override

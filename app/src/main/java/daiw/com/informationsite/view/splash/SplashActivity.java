@@ -25,6 +25,7 @@ import daiw.com.informationsite.manager.StartActivityManager;
 import daiw.com.informationsite.utils.AppMessage;
 import daiw.com.informationsite.utils.ToastUtil;
 import daiw.com.informationsite.utils.file.FileUtil;
+import daiw.com.informationsite.utils.glide.GlideProcessor;
 import daiw.com.informationsite.utils.glide.LoadImageHelper;
 import daiw.com.informationsite.utils.log.LogoutUtils;
 import daiw.com.informationsite.utils.sharedata.ShareData;
@@ -160,6 +161,8 @@ public class SplashActivity extends AppCompatActivity implements PermissionsRequ
                 //存在则
                 File file = new File(filePath);
                 if (file != null && adImage != null) {
+                    //glide默认会使用缓存图片，故需要先清理缓存
+                    GlideProcessor.getInstance().clearImageAllCache(this);
                     LoadImageHelper.getInstanse().loadImage(getApplicationContext(), file, adImage);
                     return;
                 }
@@ -167,7 +170,7 @@ public class SplashActivity extends AppCompatActivity implements PermissionsRequ
         }
         //如果本地图片不存则加载网络图片
         if(adImage != null) {
-            LoadImageHelper.getInstanse().loadImage(getApplicationContext(), Constans.URL_AD_SPLASH_1, adImage);
+            LoadImageHelper.getInstanse().loadImage(getApplicationContext(), Constans.URL_AD_SPLASH, adImage);
         }
     }
 

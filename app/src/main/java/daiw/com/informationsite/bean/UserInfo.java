@@ -10,6 +10,6 @@ package daiw.com.informationsite.bean;
  */
 public class UserInfo {
 
-    
+
 
 }
