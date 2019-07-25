@@ -67,6 +67,7 @@ public class LoginResponse {
         private String token;
         private int type;
         private String username;
+        private String nickname;
         private List<?> chapterTops;
         private List<?> collectIds;
 
@@ -142,6 +143,14 @@ public class LoginResponse {
             this.collectIds = collectIds;
         }
 
+        public String getNickname() {
+            return nickname;
+        }
+
+        public void setNickname(String nickname) {
+            this.nickname = nickname;
+        }
+
         @Override
         public String toString() {
             return "DataBean{" +
@@ -154,6 +163,7 @@ public class LoginResponse {
                     ", username='" + username + '\'' +
                     ", chapterTops=" + chapterTops +
                     ", collectIds=" + collectIds +
+                    ", nickname=" + nickname +
                     '}';
         }
     }

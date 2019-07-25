@@ -13,6 +13,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.List;
 
+import daiw.com.informationsite.MainActivity;
 import daiw.com.informationsite.api.constans.ConfigConstans;
 import daiw.com.informationsite.utils.log.LogoutUtils;
 import daiw.com.informationsite.utils.sharedata.ShareData;
@@ -133,7 +134,7 @@ public class HookUtils {
         if (oldIntent != null) {
             //集中式登录
             boolean isLogin = ShareData.getInstance().getBooleanValue(ConfigConstans.USER_FLAG_ISLOGIN, false);
-            if (isLogin) { //|| oldIntent.getComponent().getClassName().equals(XXX.class)
+                if (isLogin || oldIntent.getComponent().getClassName().equals(MainActivity.class.getName()))  { //|| oldIntent.getComponent().getClassName().equals(XXX.class)
                 //登录  还原  把原有的意图    放到realyIntent
                 realyIntent.setComponent(oldIntent.getComponent());
             } else {

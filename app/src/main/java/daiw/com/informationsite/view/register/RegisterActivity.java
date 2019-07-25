@@ -73,7 +73,7 @@ public class RegisterActivity extends MvpBaseActivity<RegisterPercenter>
 
     @Override
     public void registerSuccess() {
-        StartActivityManager.startManiActivity(RegisterActivity.this);
+        StartActivityManager.INSTANCE.startManiActivity(RegisterActivity.this);
         finish();
     }
 

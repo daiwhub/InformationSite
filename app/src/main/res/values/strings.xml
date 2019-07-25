@@ -20,4 +20,6 @@
     <string name="the_passwords_entered_are_inconsistent">两次密码不一致</string>
 
     <string name="exit_again">"再按一次退出程序"</string>
+
+    <string name="setting">设置</string>
 </resources>

@@ -33,7 +33,7 @@ public class App extends Application {
         context = getApplicationContext();
         initRetrofit();
         //初始化Hook集中式登录
-//        initHookUtils();
+        initHookUtils();
     }
      /*
       * @Description : 初始化Hook集中式登录
@@ -55,7 +55,7 @@ public class App extends Application {
         headerValues.add("juhe");
 
         ProjectInit.init(this)
-                .withApiHost("http://www.wanandroid.com/")
+                .withApiHost(ApiConstants.URL_HEADER_VALUE_1)
                 .withHeaderValues(ApiConstants.URL_HEADER_KEY_1,ApiConstants.URL_HEADER_VALUE_1)
                 .withHeaderValues(ApiConstants.URL_HEADER_KEY_2,ApiConstants.URL_HEADER_VALUE_2)
                 .configure();

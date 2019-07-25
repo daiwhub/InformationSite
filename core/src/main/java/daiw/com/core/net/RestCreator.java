@@ -1,8 +1,18 @@
 package daiw.com.core.net;
 
+import android.content.Context;
+
 import com.orhanobut.logger.Logger;
 
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.cert.X509Certificate;
 import java.util.concurrent.TimeUnit;
+
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 
 import daiw.com.core.app.ConfigKeys;
 import daiw.com.core.app.ProjectInit;
@@ -99,6 +109,42 @@ public final class RestCreator {
      */
     public static RxRestService getRxRestService(){
         return RxRestServiceHolder.REST_SERVICE;
+    }
+
+    /**
+     * 获取Https的证书
+     *
+     * @param context Activity（fragment）的上下文
+     * @return SSL的上下文对象
+     */
+    private static SSLContext getSSLContext() {
+        SSLContext s_sSLContext;
+        try {
+            s_sSLContext = SSLContext.getInstance("TLS");
+
+            //信任所有证书 （官方不推荐使用）
+            s_sSLContext.init(null, new TrustManager[]{new X509TrustManager() {
+                @Override
+                public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType) throws java.security.cert.CertificateException {
+
+                }
+
+                @Override
+                public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType) throws java.security.cert.CertificateException {
+
+                }
+
+                @Override
+                public X509Certificate[] getAcceptedIssuers() {
+                    return null;
+                }
+            }}, new SecureRandom());
+
+            return s_sSLContext;
+        } catch (NoSuchAlgorithmException | KeyManagementException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }

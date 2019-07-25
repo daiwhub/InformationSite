@@ -1,12 +1,22 @@
 package daiw.com.core.net;
 
+import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
 
 import java.io.IOException;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.cert.X509Certificate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
+import javax.security.cert.CertificateException;
 
 import daiw.com.core.app.Configurator;
 import okhttp3.HttpUrl;

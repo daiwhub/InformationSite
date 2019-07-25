@@ -69,7 +69,7 @@ public class SplashActivity extends AppCompatActivity implements PermissionsRequ
                     downTimer.cancel();
                 }
                 //跳转首页
-                StartActivityManager.startManiActivity(SplashActivity.this);
+                StartActivityManager.INSTANCE.startManiActivity(SplashActivity.this);
                 overridePendingTransition(0,0);
                 finish();
             }
@@ -96,7 +96,7 @@ public class SplashActivity extends AppCompatActivity implements PermissionsRequ
             @Override
             public void onFinish() {
                 //跳转首页
-                StartActivityManager.startManiActivity(SplashActivity.this);
+                StartActivityManager.INSTANCE.startManiActivity(SplashActivity.this);
                 overridePendingTransition(0,0);
                 finish();
             }

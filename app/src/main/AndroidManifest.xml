@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
+        <activity android:name=".view.setting.SettringActivity"></activity>
         <!-- 启动页 -->
         <activity
             android:name=".view.splash.SplashActivity"
@@ -23,7 +23,7 @@
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
@@ -33,7 +33,7 @@
             android:launchMode="singleTask" />
         <activity android:name=".view.login.LoginActivity" />
         <activity android:name=".view.ProxyActivity" />
-        <activity android:name=".view.register.RegisterActivity"/>
+        <activity android:name=".view.register.RegisterActivity" />
     </application>
 
 </manifest>
